@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Signup</title>
+  </head>
+  <body>
+    <h2>Signup</h2>
+    <form th:action="@{/signup}" method="post" th:object="${user}">
+      <p>Email: <input type="email" th:field="*{email}" /></p>
+      <p>Username: <input type="text" th:field="*{username}" /></p>
+      <p>Password: <input type="password" th:field="*{password}" /></p>
+      <p><button type="submit">Register</button></p>
+    </form>
+    <p
+      th:each="err : ${#fields.errors('*')}"
+      th:text="${err}"
+      style="color: red"
+    ></p>
+  </body>
+</html>
